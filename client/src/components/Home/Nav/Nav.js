@@ -1,16 +1,11 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, {  useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { UserContext } from "../../../App";
 import logo from "../../../images/logo.png";
 import NavItems from "./NavItems";
 
 const Nav = () => {
   // for mobile view
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const {
-    loggedInUser: { isSignedIn },
-  } = useContext(UserContext);
   const [isSticky, setSticky] = useState(false);
 
   useEffect(() => {
@@ -49,19 +44,9 @@ const Nav = () => {
             {/* Nav Items */}
             <NavItems isSticky={isSticky} />
             <li>
-              {isSignedIn ? (
-                <Link
-                  to="/dashboard/profile"
-                  className="signup-button"
-                  title="Book Now"
-                >
-                  Dashboard
-                </Link>
-              ) : (
                 <Link to="/login" className="signup-button" title="Book Now">
                   Book Now
                 </Link>
-              )}
             </li>
           </ul>
 
@@ -135,15 +120,6 @@ const Nav = () => {
                     <ul className="space-y-4">
                       <NavItems />
                       <li>
-                        {isSignedIn ? (
-                          <Link
-                            to="/dashboard/profile"
-                            className="signup-button  w-ful"
-                            title="Book Now"
-                          >
-                            Dashboard
-                          </Link>
-                        ) : (
                           <Link
                             to="/login"
                             className="signup-button  w-ful"
@@ -151,7 +127,6 @@ const Nav = () => {
                           >
                             Book Now
                           </Link>
-                        )}
                       </li>
                     </ul>
                   </nav>
